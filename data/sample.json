@@ -1,0 +1,9 @@
+{
+  "event_id": "evt-092105-011-0001",
+  "event_type": "DESIGN_SUBMITTED",
+  "aggregate_type": "property_term",
+  "aggregate_id": "childcare-space-conversion-001",
+  "occurred_at": "2026-09-20T12:00:00+08:00",
+  "version": 1,
+  "summary": "登记托育空间改造验收的首条领域记录"
+}
