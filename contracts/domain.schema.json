@@ -1,64 +1,302 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "托育空间改造验收领域事件",
-  "description": "用于跨模块交换事实记录的公共信封。",
+  "title": "老城区托育空间改造验收领域事件",
+  "description": "跨部门补件统一沿用底座四个聚合：property_term（产权与场地）、design_revision（设计版次与施工）、inspection_finding（检查缺陷与分区验收）、opening_decision（开园决定）。设计通过、施工完成、允许收托是三类独立事件，禁止合并为单一“已完工”。",
   "type": "object",
-  "required": [
-    "event_id",
-    "event_type",
-    "aggregate_type",
-    "aggregate_id",
-    "occurred_at",
-    "version",
-    "summary"
-  ],
+  "required": ["event_id", "event_type", "aggregate_type", "aggregate_id", "occurred_at", "version", "summary", "payload"],
   "properties": {
-    "event_id": {
-      "type": "string",
-      "minLength": 8,
-      "description": "事件唯一标识"
-    },
+    "event_id": { "type": "string", "minLength": 8, "description": "事件唯一标识；来源系统重试必须沿用原标识" },
     "event_type": {
       "type": "string",
       "enum": [
+        "PROPERTY_TERM_REGISTERED",
+        "NEIGHBOR_AGREEMENT_RECORDED",
+        "SHARED_SLOT_AGREED",
+        "EXIT_PLAN_FORMED",
+        "SITE_HANDED_BACK",
         "DESIGN_SUBMITTED",
+        "DESIGN_APPROVED",
+        "CONSTRUCTION_COMPLETED",
+        "MATERIAL_TEST_RECORDED",
+        "FIRE_OPINION_RECORDED",
+        "HEALTH_OPINION_RECORDED",
         "INSPECTION_RECORDED",
         "DEFECT_ASSIGNED",
+        "DEFECT_RECTIFIED",
         "ZONE_ACCEPTED",
-        "SITE_HANDED_BACK"
-      ],
-      "description": "本领域事件类型"
+        "OPENING_DECIDED"
+      ]
     },
-    "aggregate_type": {
-      "type": "string",
-      "enum": [
-        "property_term",
-        "design_revision",
-        "inspection_finding",
-        "opening_decision"
-      ],
-      "description": "业务对象类型"
+    "aggregate_type": { "enum": ["property_term", "design_revision", "inspection_finding", "opening_decision"] },
+    "aggregate_id": { "type": "string", "minLength": 1 },
+    "occurred_at": { "type": "string", "format": "date-time" },
+    "version": { "type": "integer", "minimum": 1 },
+    "summary": { "type": "string", "minLength": 2 },
+    "payload": { "type": "object" }
+  },
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "required": ["kind", "ref", "captured_at"],
+      "properties": {
+        "kind": { "enum": ["现场照片", "现场视频", "检测报告", "验收记录", "意见书"] },
+        "ref": { "type": "string", "minLength": 3, "description": "可追溯档案编号或存储地址" },
+        "sha256": { "type": "string", "pattern": "^[0-9a-f]{8,64}$" },
+        "captured_at": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": true
     },
-    "aggregate_id": {
-      "type": "string",
-      "minLength": 1,
-      "description": "业务对象标识"
+    "signer": {
+      "type": "object",
+      "required": ["role", "name", "signed_at"],
+      "properties": {
+        "role": { "type": "string", "minLength": 2 },
+        "name": { "type": "string", "minLength": 2 },
+        "signed_at": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": true
     },
-    "occurred_at": {
-      "type": "string",
-      "format": "date-time",
-      "description": "事实发生时间"
+    "property_term_registered": {
+      "type": "object",
+      "required": ["site_name", "original_use", "property_unit", "area_total_m2", "term_start", "term_end"],
+      "properties": {
+        "site_name": { "type": "string" },
+        "original_use": { "type": "string", "description": "原用途，如社区配套服务用房、旧厂房、商业网点" },
+        "property_unit": { "type": "string", "description": "产权单位" },
+        "area_total_m2": { "type": "number", "description": "整栋建筑面积，仅登记，不得用于折算收托容量" },
+        "term_start": { "type": "string", "format": "date" },
+        "term_end": { "type": "string", "format": "date" }
+      },
+      "additionalProperties": true
     },
-    "version": {
-      "type": "integer",
-      "minimum": 1,
-      "description": "对象版本"
+    "neighbor_agreement_recorded": {
+      "type": "object",
+      "required": ["agreement_id", "parties", "terms", "valid_from", "valid_until"],
+      "properties": {
+        "agreement_id": { "type": "string" },
+        "parties": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "terms": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "valid_from": { "type": "string", "format": "date" },
+        "valid_until": { "type": "string", "format": "date" }
+      },
+      "additionalProperties": true
     },
-    "summary": {
-      "type": "string",
-      "minLength": 2,
-      "description": "中文事实摘要"
+    "shared_slot_agreed": {
+      "type": "object",
+      "required": ["zone_id", "partner", "slots"],
+      "properties": {
+        "zone_id": { "type": "string" },
+        "partner": { "type": "string" },
+        "slots": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["weekday", "from", "to", "exclusive_for_childcare"],
+            "properties": {
+              "weekday": { "enum": ["周一", "周二", "周三", "周四", "周五", "周六", "周日"] },
+              "from": { "type": "string", "pattern": "^[0-2][0-9]:[0-5][0-9]$" },
+              "to": { "type": "string", "pattern": "^[0-9]{2}:[0-9]{2}$" },
+              "exclusive_for_childcare": { "type": "boolean", "description": "该时段是否由托育专用；非专用时段不计入容量折算" }
+            }
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "exit_plan_formed": {
+      "type": "object",
+      "required": ["plan_id", "facilities", "deposit", "child_placement", "restoration", "target_handback_date", "signers"],
+      "properties": {
+        "plan_id": { "type": "string" },
+        "facilities": { "type": "string", "minLength": 5, "description": "设施设备处置安排" },
+        "deposit": { "type": "string", "minLength": 5, "description": "押金结算安排" },
+        "child_placement": { "type": "string", "minLength": 5, "description": "在托儿童安置安排" },
+        "restoration": { "type": "string", "minLength": 5, "description": "场地恢复责任" },
+        "target_handback_date": { "type": "string", "format": "date" },
+        "signers": { "type": "array", "items": { "$ref": "#/$defs/signer" }, "minItems": 3 }
+      },
+      "additionalProperties": true
+    },
+    "site_handed_back": {
+      "type": "object",
+      "required": ["handback_date", "restoration_verified"],
+      "properties": {
+        "handback_date": { "type": "string", "format": "date" },
+        "restoration_verified": { "type": "boolean" },
+        "signers": { "type": "array", "items": { "$ref": "#/$defs/signer" } }
+      },
+      "additionalProperties": true
+    },
+    "design_submitted": {
+      "type": "object",
+      "required": ["revision_no", "zones", "affected_zone_ids"],
+      "properties": {
+        "revision_no": { "type": "string", "pattern": "^R[0-9]+$" },
+        "supersedes": { "type": ["string", "null"] },
+        "zones": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["zone_id", "name", "function", "indoor_area_m2", "capacity_eligible"],
+            "properties": {
+              "zone_id": { "type": "string" },
+              "name": { "type": "string" },
+              "function": { "type": "string", "description": "功能分区，如午睡区、活动室、保健观察室" },
+              "indoor_area_m2": { "type": "number", "minimum": 0 },
+              "capacity_eligible": { "type": "boolean", "description": "是否为可计入收托容量的儿童活动区域" }
+            }
+          }
+        },
+        "affected_zone_ids": { "type": "array", "items": { "type": "string" }, "description": "本次图纸修订影响的分区；这些分区既有检查结论一律作废重做" }
+      },
+      "additionalProperties": true
+    },
+    "design_approved": {
+      "type": "object",
+      "required": ["revision_no", "approved_by"],
+      "properties": {
+        "revision_no": { "type": "string" },
+        "approved_by": { "type": "string" },
+        "conditions": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "construction_completed": {
+      "type": "object",
+      "required": ["revision_no"],
+      "properties": {
+        "revision_no": { "type": "string" },
+        "completed_note": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "material_test_recorded": {
+      "type": "object",
+      "required": ["revision_no", "zone_id", "material", "report_no", "result"],
+      "properties": {
+        "revision_no": { "type": "string" },
+        "zone_id": { "type": "string" },
+        "material": { "type": "string" },
+        "report_no": { "type": "string" },
+        "result": { "enum": ["PASS", "FAIL"] }
+      },
+      "additionalProperties": true
+    },
+    "department_opinion": {
+      "type": "object",
+      "required": ["revision_no", "opinion_no", "zone_ids", "result", "issued_on", "valid_until"],
+      "properties": {
+        "revision_no": { "type": "string" },
+        "opinion_no": { "type": "string" },
+        "zone_ids": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "result": { "enum": ["合格", "有条件合格", "不合格"] },
+        "conditions": { "type": "array", "items": { "type": "string" } },
+        "issued_on": { "type": "string", "format": "date" },
+        "valid_until": { "type": "string", "format": "date" }
+      },
+      "additionalProperties": true
+    },
+    "inspection_recorded": {
+      "type": "object",
+      "required": ["finding_id", "revision_no", "zone_id", "category", "severity", "description"],
+      "properties": {
+        "finding_id": { "type": "string" },
+        "revision_no": { "type": "string" },
+        "zone_id": { "type": "string" },
+        "category": { "enum": ["消防", "卫生", "材料", "施工", "设施"] },
+        "severity": { "enum": ["critical", "major", "minor"] },
+        "description": { "type": "string" },
+        "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" } }
+      },
+      "additionalProperties": true
+    },
+    "defect_assigned": {
+      "type": "object",
+      "required": ["finding_id", "assignee", "due_date"],
+      "properties": {
+        "finding_id": { "type": "string" },
+        "assignee": { "type": "string" },
+        "due_date": { "type": "string", "format": "date" }
+      },
+      "additionalProperties": true
+    },
+    "defect_rectified": {
+      "type": "object",
+      "required": ["finding_id", "evidence"],
+      "properties": {
+        "finding_id": { "type": "string" },
+        "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" }, "minItems": 1 }
+      },
+      "additionalProperties": true
+    },
+    "zone_accepted": {
+      "type": "object",
+      "required": ["revision_no", "zone_id", "signers"],
+      "properties": {
+        "revision_no": { "type": "string" },
+        "zone_id": { "type": "string" },
+        "signers": { "type": "array", "items": { "$ref": "#/$defs/signer" }, "minItems": 2 },
+        "notes": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "opening_decided": {
+      "type": "object",
+      "required": ["decision_no", "mode", "revision_no", "zone_ids", "capacity_filed", "restrictions", "evidence", "signers", "valid_from", "valid_until", "based_on"],
+      "properties": {
+        "decision_no": { "type": "string" },
+        "mode": { "enum": ["FULL", "PARTIAL"], "description": "FULL=全园开放；PARTIAL=局部开放，必须给出排除区域、明确条件与隔离措施" },
+        "revision_no": { "type": "string" },
+        "zone_ids": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "excluded_zone_ids": { "type": "array", "items": { "type": "string" }, "description": "局部开放时不予开放的区域" },
+        "conditions": { "type": "array", "items": { "type": "string" }, "description": "局部开放必须满足的明确条件" },
+        "isolation_measures": { "type": "string", "description": "对未开放/缺陷区域的物理隔离措施" },
+        "capacity_filed": { "type": "integer", "minimum": 0, "description": "本次获准区域折算后的备案容量" },
+        "staffing": {
+          "type": "object",
+          "required": ["caregivers", "ratio"],
+          "properties": {
+            "caregivers": { "type": "integer", "minimum": 1 },
+            "ratio": { "type": "integer", "minimum": 1, "description": "保育人员配比上限，如托大班 1:7 填 7" }
+          }
+        },
+        "restrictions": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" }, "minItems": 1 },
+        "signers": { "type": "array", "items": { "$ref": "#/$defs/signer" }, "minItems": 2 },
+        "valid_from": { "type": "string", "format": "date" },
+        "valid_until": { "type": "string", "format": "date" },
+        "based_on": {
+          "type": "object",
+          "description": "开园依据的逐份可追溯文件；过期、结论不合格或版次不符（已随修订作废）的意见书不得引用。图纸修订后可同时引用旧版次有效分区意见与新版次重出意见。",
+          "properties": {
+            "fire_opinion_nos": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+            "health_opinion_nos": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+            "material_report_nos": { "type": "array", "items": { "type": "string" } }
+          },
+          "required": ["fire_opinion_nos", "health_opinion_nos"]
+        }
+      },
+      "additionalProperties": true
     }
   },
-  "additionalProperties": true
+  "oneOf": [
+    { "required": ["event_type", "aggregate_type", "payload"], "properties": { "event_type": { "const": "PROPERTY_TERM_REGISTERED" }, "aggregate_type": { "const": "property_term" }, "payload": { "$ref": "#/$defs/property_term_registered" } } },
+    { "required": ["event_type", "aggregate_type", "payload"], "properties": { "event_type": { "const": "NEIGHBOR_AGREEMENT_RECORDED" }, "aggregate_type": { "const": "property_term" }, "payload": { "$ref": "#/$defs/neighbor_agreement_recorded" } } },
+    { "required": ["event_type", "aggregate_type", "payload"], "properties": { "event_type": { "const": "SHARED_SLOT_AGREED" }, "aggregate_type": { "const": "property_term" }, "payload": { "$ref": "#/$defs/shared_slot_agreed" } } },
+    { "required": ["event_type", "aggregate_type", "payload"], "properties": { "event_type": { "const": "EXIT_PLAN_FORMED" }, "aggregate_type": { "const": "property_term" }, "payload": { "$ref": "#/$defs/exit_plan_formed" } } },
+    { "required": ["event_type", "aggregate_type", "payload"], "properties": { "event_type": { "const": "SITE_HANDED_BACK" }, "aggregate_type": { "const": "property_term" }, "payload": { "$ref": "#/$defs/site_handed_back" } } },
+    { "required": ["event_type", "aggregate_type", "payload"], "properties": { "event_type": { "const": "DESIGN_SUBMITTED" }, "aggregate_type": { "const": "design_revision" }, "payload": { "$ref": "#/$defs/design_submitted" } } },
+    { "required": ["event_type", "aggregate_type", "payload"], "properties": { "event_type": { "const": "DESIGN_APPROVED" }, "aggregate_type": { "const": "design_revision" }, "payload": { "$ref": "#/$defs/design_approved" } } },
+    { "required": ["event_type", "aggregate_type", "payload"], "properties": { "event_type": { "const": "CONSTRUCTION_COMPLETED" }, "aggregate_type": { "const": "design_revision" }, "payload": { "$ref": "#/$defs/construction_completed" } } },
+    { "required": ["event_type", "aggregate_type", "payload"], "properties": { "event_type": { "const": "MATERIAL_TEST_RECORDED" }, "aggregate_type": { "const": "design_revision" }, "payload": { "$ref": "#/$defs/material_test_recorded" } } },
+    { "required": ["event_type", "aggregate_type", "payload"], "properties": { "event_type": { "const": "FIRE_OPINION_RECORDED" }, "aggregate_type": { "const": "design_revision" }, "payload": { "$ref": "#/$defs/department_opinion" } } },
+    { "required": ["event_type", "aggregate_type", "payload"], "properties": { "event_type": { "const": "HEALTH_OPINION_RECORDED" }, "aggregate_type": { "const": "design_revision" }, "payload": { "$ref": "#/$defs/department_opinion" } } },
+    { "required": ["event_type", "aggregate_type", "payload"], "properties": { "event_type": { "const": "INSPECTION_RECORDED" }, "aggregate_type": { "const": "inspection_finding" }, "payload": { "$ref": "#/$defs/inspection_recorded" } } },
+    { "required": ["event_type", "aggregate_type", "payload"], "properties": { "event_type": { "const": "DEFECT_ASSIGNED" }, "aggregate_type": { "const": "inspection_finding" }, "payload": { "$ref": "#/$defs/defect_assigned" } } },
+    { "required": ["event_type", "aggregate_type", "payload"], "properties": { "event_type": { "const": "DEFECT_RECTIFIED" }, "aggregate_type": { "const": "inspection_finding" }, "payload": { "$ref": "#/$defs/defect_rectified" } } },
+    { "required": ["event_type", "aggregate_type", "payload"], "properties": { "event_type": { "const": "ZONE_ACCEPTED" }, "aggregate_type": { "const": "inspection_finding" }, "payload": { "$ref": "#/$defs/zone_accepted" } } },
+    { "required": ["event_type", "aggregate_type", "payload"], "properties": { "event_type": { "const": "OPENING_DECIDED" }, "aggregate_type": { "const": "opening_decision" }, "payload": { "$ref": "#/$defs/opening_decided" } } }
+  ]
 }

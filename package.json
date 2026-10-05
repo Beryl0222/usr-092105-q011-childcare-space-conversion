@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "领域事件基础校验",
+  "description": "老城区托育空间改造验收：事件溯源、分区验收、局部开园与退出恢复",
   "scripts": {
-    "test": "node --test"
+    "test": "node --test",
+    "report": "node src/report.js"
   }
 }

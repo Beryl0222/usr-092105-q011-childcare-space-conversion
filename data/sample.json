@@ -1,9 +1,686 @@
 {
-  "event_id": "evt-092105-011-0001",
-  "event_type": "DESIGN_SUBMITTED",
-  "aggregate_type": "property_term",
-  "aggregate_id": "childcare-space-conversion-001",
-  "occurred_at": "2026-09-20T12:00:00+08:00",
-  "version": 1,
-  "summary": "登记托育空间改造验收的首条领域记录"
+  "site_id": "site-huaiyinli-01",
+  "events": [
+    {
+      "event_id": "evt-site-huaiyinli-01-0001",
+      "event_type": "PROPERTY_TERM_REGISTERED",
+      "aggregate_type": "property_term",
+      "aggregate_id": "site-huaiyinli-01",
+      "occurred_at": "2026-03-02T01:00:00.000Z",
+      "version": 1,
+      "summary": "登记场地产权期限与原用途：社区配套服务用房（原居委会仓储用房）",
+      "payload": {
+        "site_name": "槐荫里社区托育点",
+        "original_use": "社区配套服务用房（原居委会仓储用房）",
+        "property_unit": "老城建设投资有限公司",
+        "area_total_m2": 320,
+        "term_start": "2024-11-01",
+        "term_end": "2028-09-30"
+      }
+    },
+    {
+      "event_id": "evt-site-huaiyinli-01-0002",
+      "event_type": "NEIGHBOR_AGREEMENT_RECORDED",
+      "aggregate_type": "property_term",
+      "aggregate_id": "site-huaiyinli-01",
+      "occurred_at": "2026-03-05T02:00:00.000Z",
+      "version": 2,
+      "summary": "登记邻里约定 NB-2026-01",
+      "payload": {
+        "agreement_id": "NB-2026-01",
+        "parties": [
+          "槐荫里居委会",
+          "槐荫里托育运营有限公司",
+          "1 号楼临街居民代表"
+        ],
+        "terms": [
+          "日间活动音乐音量不超过 60 分贝",
+          "接送高峰 07:40–08:40 不得占用消防通道",
+          "每月 5 日向居委会公示投诉处理情况"
+        ],
+        "valid_from": "2026-03-05",
+        "valid_until": "2028-09-30"
+      }
+    },
+    {
+      "event_id": "evt-site-huaiyinli-01-0003",
+      "event_type": "DESIGN_SUBMITTED",
+      "aggregate_type": "design_revision",
+      "aggregate_id": "site-huaiyinli-01",
+      "occurred_at": "2026-04-01T06:00:00.000Z",
+      "version": 1,
+      "summary": "提交设计图纸 R1，受影响分区 无",
+      "payload": {
+        "revision_no": "R1",
+        "supersedes": null,
+        "zones": [
+          {
+            "zone_id": "Z-nap",
+            "name": "午睡区",
+            "function": "睡眠休憩",
+            "indoor_area_m2": 45,
+            "capacity_eligible": true
+          },
+          {
+            "zone_id": "Z-act",
+            "name": "活动室",
+            "function": "游戏活动",
+            "indoor_area_m2": 60,
+            "capacity_eligible": true
+          },
+          {
+            "zone_id": "Z-dining",
+            "name": "就餐区",
+            "function": "就餐",
+            "indoor_area_m2": 30,
+            "capacity_eligible": true
+          },
+          {
+            "zone_id": "Z-multi",
+            "name": "多功能厅",
+            "function": "共享活动（与社区老年活动室错时共用）",
+            "indoor_area_m2": 40,
+            "capacity_eligible": true
+          },
+          {
+            "zone_id": "Z-health",
+            "name": "保健观察室",
+            "function": "卫生保健与临时隔离",
+            "indoor_area_m2": 12,
+            "capacity_eligible": false
+          }
+        ],
+        "affected_zone_ids": []
+      }
+    },
+    {
+      "event_id": "evt-site-huaiyinli-01-0004",
+      "event_type": "DESIGN_APPROVED",
+      "aggregate_type": "design_revision",
+      "aggregate_id": "site-huaiyinli-01",
+      "occurred_at": "2026-04-18T07:00:00.000Z",
+      "version": 2,
+      "summary": "设计通过：R1（不等同施工完成或允许收托）",
+      "payload": {
+        "conditions": [],
+        "revision_no": "R1",
+        "approved_by": "区住建委设计审查科"
+      }
+    },
+    {
+      "event_id": "evt-site-huaiyinli-01-0005",
+      "event_type": "CONSTRUCTION_COMPLETED",
+      "aggregate_type": "design_revision",
+      "aggregate_id": "site-huaiyinli-01",
+      "occurred_at": "2026-05-30T08:00:00.000Z",
+      "version": 3,
+      "summary": "施工完成：R1（不等同允许收托）",
+      "payload": {
+        "revision_no": "R1",
+        "completed_note": "按 R1 图纸完成全部五个分区装修"
+      }
+    },
+    {
+      "event_id": "evt-site-huaiyinli-01-0006",
+      "event_type": "MATERIAL_TEST_RECORDED",
+      "aggregate_type": "design_revision",
+      "aggregate_id": "site-huaiyinli-01",
+      "occurred_at": "2026-06-02T03:00:00.000Z",
+      "version": 4,
+      "summary": "登记Z-napPVC 地胶检测 MT-R1-NAP-01：合格",
+      "payload": {
+        "revision_no": "R1",
+        "zone_id": "Z-nap",
+        "material": "PVC 地胶",
+        "report_no": "MT-R1-NAP-01",
+        "result": "PASS"
+      }
+    },
+    {
+      "event_id": "evt-site-huaiyinli-01-0007",
+      "event_type": "MATERIAL_TEST_RECORDED",
+      "aggregate_type": "design_revision",
+      "aggregate_id": "site-huaiyinli-01",
+      "occurred_at": "2026-06-02T03:00:00.000Z",
+      "version": 5,
+      "summary": "登记Z-act木地板检测 MT-R1-ACT-01：合格",
+      "payload": {
+        "revision_no": "R1",
+        "zone_id": "Z-act",
+        "material": "木地板",
+        "report_no": "MT-R1-ACT-01",
+        "result": "PASS"
+      }
+    },
+    {
+      "event_id": "evt-site-huaiyinli-01-0008",
+      "event_type": "MATERIAL_TEST_RECORDED",
+      "aggregate_type": "design_revision",
+      "aggregate_id": "site-huaiyinli-01",
+      "occurred_at": "2026-06-02T03:00:00.000Z",
+      "version": 6,
+      "summary": "登记Z-dining防滑地砖检测 MT-R1-DIN-01：合格",
+      "payload": {
+        "revision_no": "R1",
+        "zone_id": "Z-dining",
+        "material": "防滑地砖",
+        "report_no": "MT-R1-DIN-01",
+        "result": "PASS"
+      }
+    },
+    {
+      "event_id": "evt-site-huaiyinli-01-0009",
+      "event_type": "MATERIAL_TEST_RECORDED",
+      "aggregate_type": "design_revision",
+      "aggregate_id": "site-huaiyinli-01",
+      "occurred_at": "2026-06-02T03:00:00.000Z",
+      "version": 7,
+      "summary": "登记Z-multiPVC 地胶检测 MT-R1-MUL-01：合格",
+      "payload": {
+        "revision_no": "R1",
+        "zone_id": "Z-multi",
+        "material": "PVC 地胶",
+        "report_no": "MT-R1-MUL-01",
+        "result": "PASS"
+      }
+    },
+    {
+      "event_id": "evt-site-huaiyinli-01-0010",
+      "event_type": "MATERIAL_TEST_RECORDED",
+      "aggregate_type": "design_revision",
+      "aggregate_id": "site-huaiyinli-01",
+      "occurred_at": "2026-06-02T03:00:00.000Z",
+      "version": 8,
+      "summary": "登记Z-health水性内墙涂料检测 MT-R1-HEA-01：合格",
+      "payload": {
+        "revision_no": "R1",
+        "zone_id": "Z-health",
+        "material": "水性内墙涂料",
+        "report_no": "MT-R1-HEA-01",
+        "result": "PASS"
+      }
+    },
+    {
+      "event_id": "evt-site-huaiyinli-01-0011",
+      "event_type": "FIRE_OPINION_RECORDED",
+      "aggregate_type": "design_revision",
+      "aggregate_id": "site-huaiyinli-01",
+      "occurred_at": "2026-06-12T02:30:00.000Z",
+      "version": 9,
+      "summary": "登记消防意见 XF-2026-001：有条件合格",
+      "payload": {
+        "conditions": [
+          "疏散通道全天保持畅通"
+        ],
+        "revision_no": "R1",
+        "opinion_no": "XF-2026-001",
+        "zone_ids": [
+          "Z-nap",
+          "Z-act",
+          "Z-dining",
+          "Z-multi",
+          "Z-health"
+        ],
+        "result": "有条件合格",
+        "issued_on": "2026-06-10",
+        "valid_until": "2027-06-09"
+      }
+    },
+    {
+      "event_id": "evt-site-huaiyinli-01-0012",
+      "event_type": "HEALTH_OPINION_RECORDED",
+      "aggregate_type": "design_revision",
+      "aggregate_id": "site-huaiyinli-01",
+      "occurred_at": "2026-06-12T02:30:00.000Z",
+      "version": 10,
+      "summary": "登记卫生评价意见 WS-2026-001：有条件合格",
+      "payload": {
+        "conditions": [
+          "在岗保育员持有效健康证"
+        ],
+        "revision_no": "R1",
+        "opinion_no": "WS-2026-001",
+        "zone_ids": [
+          "Z-nap",
+          "Z-act",
+          "Z-dining",
+          "Z-multi",
+          "Z-health"
+        ],
+        "result": "有条件合格",
+        "issued_on": "2026-06-11",
+        "valid_until": "2027-06-10"
+      }
+    },
+    {
+      "event_id": "evt-site-huaiyinli-01-0013",
+      "event_type": "INSPECTION_RECORDED",
+      "aggregate_type": "inspection_finding",
+      "aggregate_id": "site-huaiyinli-01",
+      "occurred_at": "2026-06-18T01:30:00.000Z",
+      "version": 1,
+      "summary": "记录检查缺陷 FD-NAP-01（Z-nap/major）",
+      "payload": {
+        "finding_id": "FD-NAP-01",
+        "revision_no": "R1",
+        "zone_id": "Z-nap",
+        "category": "消防",
+        "severity": "major",
+        "description": "午睡区应急照明照度不足，且一具疏散指示标志损坏",
+        "evidence": [
+          {
+            "kind": "现场照片",
+            "ref": "EV-NAP-01-A",
+            "captured_at": "2026-06-18T01:30:00.000Z"
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "evt-site-huaiyinli-01-0014",
+      "event_type": "DEFECT_ASSIGNED",
+      "aggregate_type": "inspection_finding",
+      "aggregate_id": "site-huaiyinli-01",
+      "occurred_at": "2026-06-20T06:00:00.000Z",
+      "version": 2,
+      "summary": "缺陷 FD-NAP-01 派单给施工方项目经理 周工，限期 2026-07-31",
+      "payload": {
+        "finding_id": "FD-NAP-01",
+        "assignee": "施工方项目经理 周工",
+        "due_date": "2026-07-31"
+      }
+    },
+    {
+      "event_id": "evt-site-huaiyinli-01-0015",
+      "event_type": "ZONE_ACCEPTED",
+      "aggregate_type": "inspection_finding",
+      "aggregate_id": "site-huaiyinli-01",
+      "occurred_at": "2026-06-25T02:00:00.000Z",
+      "version": 3,
+      "summary": "分区验收通过：Z-act（R1）",
+      "payload": {
+        "revision_no": "R1",
+        "zone_id": "Z-act",
+        "signers": [
+          {
+            "role": "街道办事处验收专员",
+            "name": "李建国",
+            "signed_at": "2026-06-25T02:00:00.000Z"
+          },
+          {
+            "role": "托育机构负责人",
+            "name": "陈敏",
+            "signed_at": "2026-06-25T02:00:00.000Z"
+          }
+        ],
+        "notes": "Z-act 现场复核符合 R1 图纸与部门意见"
+      }
+    },
+    {
+      "event_id": "evt-site-huaiyinli-01-0016",
+      "event_type": "ZONE_ACCEPTED",
+      "aggregate_type": "inspection_finding",
+      "aggregate_id": "site-huaiyinli-01",
+      "occurred_at": "2026-06-25T02:00:00.000Z",
+      "version": 4,
+      "summary": "分区验收通过：Z-dining（R1）",
+      "payload": {
+        "revision_no": "R1",
+        "zone_id": "Z-dining",
+        "signers": [
+          {
+            "role": "街道办事处验收专员",
+            "name": "李建国",
+            "signed_at": "2026-06-25T02:00:00.000Z"
+          },
+          {
+            "role": "托育机构负责人",
+            "name": "陈敏",
+            "signed_at": "2026-06-25T02:00:00.000Z"
+          }
+        ],
+        "notes": "Z-dining 现场复核符合 R1 图纸与部门意见"
+      }
+    },
+    {
+      "event_id": "evt-site-huaiyinli-01-0017",
+      "event_type": "ZONE_ACCEPTED",
+      "aggregate_type": "inspection_finding",
+      "aggregate_id": "site-huaiyinli-01",
+      "occurred_at": "2026-06-25T02:00:00.000Z",
+      "version": 5,
+      "summary": "分区验收通过：Z-multi（R1）",
+      "payload": {
+        "revision_no": "R1",
+        "zone_id": "Z-multi",
+        "signers": [
+          {
+            "role": "街道办事处验收专员",
+            "name": "李建国",
+            "signed_at": "2026-06-25T02:00:00.000Z"
+          },
+          {
+            "role": "托育机构负责人",
+            "name": "陈敏",
+            "signed_at": "2026-06-25T02:00:00.000Z"
+          }
+        ],
+        "notes": "Z-multi 现场复核符合 R1 图纸与部门意见"
+      }
+    },
+    {
+      "event_id": "evt-site-huaiyinli-01-0018",
+      "event_type": "SHARED_SLOT_AGREED",
+      "aggregate_type": "property_term",
+      "aggregate_id": "site-huaiyinli-01",
+      "occurred_at": "2026-06-26T07:00:00.000Z",
+      "version": 3,
+      "summary": "登记分区 Z-multi 与槐荫里社区老年活动室的共享时段",
+      "payload": {
+        "zone_id": "Z-multi",
+        "partner": "槐荫里社区老年活动室",
+        "slots": [
+          {
+            "weekday": "周一",
+            "from": "08:00",
+            "to": "12:00",
+            "exclusive_for_childcare": true
+          },
+          {
+            "weekday": "周二",
+            "from": "08:00",
+            "to": "12:00",
+            "exclusive_for_childcare": true
+          },
+          {
+            "weekday": "周三",
+            "from": "08:00",
+            "to": "12:00",
+            "exclusive_for_childcare": true
+          },
+          {
+            "weekday": "周四",
+            "from": "08:00",
+            "to": "12:00",
+            "exclusive_for_childcare": true
+          },
+          {
+            "weekday": "周五",
+            "from": "08:00",
+            "to": "12:00",
+            "exclusive_for_childcare": true
+          },
+          {
+            "weekday": "周二",
+            "from": "14:00",
+            "to": "17:00",
+            "exclusive_for_childcare": false
+          },
+          {
+            "weekday": "周四",
+            "from": "14:00",
+            "to": "17:00",
+            "exclusive_for_childcare": false
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "evt-site-huaiyinli-01-0019",
+      "event_type": "OPENING_DECIDED",
+      "aggregate_type": "opening_decision",
+      "aggregate_id": "site-huaiyinli-01",
+      "occurred_at": "2026-06-28T08:00:00.000Z",
+      "version": 1,
+      "summary": "作出局部开园决定 OD-2026-01，备案容量 35 人",
+      "payload": {
+        "decision_no": "OD-2026-01",
+        "mode": "PARTIAL",
+        "revision_no": "R1",
+        "zone_ids": [
+          "Z-act",
+          "Z-dining",
+          "Z-multi"
+        ],
+        "excluded_zone_ids": [
+          "Z-nap",
+          "Z-health"
+        ],
+        "conditions": [
+          "午睡区 FD-NAP-01 整改并复验前，幼儿不得进入午睡区，午休暂在活动室分区进行",
+          "多功能厅非专用时段（周二、周四下午）不得安排幼儿活动"
+        ],
+        "isolation_measures": "午睡区入口设置 1.2 米固定式围挡并张贴停用标识，由保健员每半日巡查一次",
+        "capacity_filed": 35,
+        "staffing": {
+          "caregivers": 6,
+          "ratio": 7
+        },
+        "restrictions": [
+          "疏散通道全天保持畅通",
+          "在岗保育员持有效健康证",
+          "停止招收两年期及以上长期班，任何班期结业日不得晚于场地使用权到期日 2028-09-30，退出安排提前半年公告",
+          "多功能厅仅在托育专用时段计入使用，周二、周四下午由社区老年活动室使用"
+        ],
+        "evidence": [
+          {
+            "kind": "现场照片",
+            "ref": "EV-OPEN-01-A",
+            "captured_at": "2026-06-28T08:00:00.000Z"
+          },
+          {
+            "kind": "现场照片",
+            "ref": "EV-OPEN-01-B",
+            "captured_at": "2026-06-28T08:00:00.000Z"
+          },
+          {
+            "kind": "验收记录",
+            "ref": "EV-OPEN-01-C",
+            "captured_at": "2026-06-28T08:00:00.000Z"
+          }
+        ],
+        "signers": [
+          {
+            "role": "街道（主管部门）批准人",
+            "name": "李建国",
+            "signed_at": "2026-06-28T08:00:00.000Z"
+          },
+          {
+            "role": "托育机构负责人",
+            "name": "陈敏",
+            "signed_at": "2026-06-28T08:00:00.000Z"
+          }
+        ],
+        "valid_from": "2026-07-01",
+        "valid_until": "2027-06-09",
+        "based_on": {
+          "fire_opinion_nos": [
+            "XF-2026-001"
+          ],
+          "health_opinion_nos": [
+            "WS-2026-001"
+          ],
+          "material_report_nos": [
+            "MT-R1-ACT-01",
+            "MT-R1-DIN-01",
+            "MT-R1-MUL-01"
+          ]
+        }
+      }
+    },
+    {
+      "event_id": "evt-site-huaiyinli-01-0020",
+      "event_type": "DESIGN_SUBMITTED",
+      "aggregate_type": "design_revision",
+      "aggregate_id": "site-huaiyinli-01",
+      "occurred_at": "2026-09-15T01:00:00.000Z",
+      "version": 11,
+      "summary": "提交设计图纸 R2，受影响分区 Z-nap",
+      "payload": {
+        "revision_no": "R2",
+        "supersedes": "R1",
+        "zones": [
+          {
+            "zone_id": "Z-nap",
+            "name": "午睡区（R2 增设直通疏散门）",
+            "function": "睡眠休憩",
+            "indoor_area_m2": 45,
+            "capacity_eligible": true
+          },
+          {
+            "zone_id": "Z-act",
+            "name": "活动室",
+            "function": "游戏活动",
+            "indoor_area_m2": 60,
+            "capacity_eligible": true
+          },
+          {
+            "zone_id": "Z-dining",
+            "name": "就餐区",
+            "function": "就餐",
+            "indoor_area_m2": 30,
+            "capacity_eligible": true
+          },
+          {
+            "zone_id": "Z-multi",
+            "name": "多功能厅",
+            "function": "共享活动（与社区老年活动室错时共用）",
+            "indoor_area_m2": 40,
+            "capacity_eligible": true
+          },
+          {
+            "zone_id": "Z-health",
+            "name": "保健观察室",
+            "function": "卫生保健与临时隔离",
+            "indoor_area_m2": 12,
+            "capacity_eligible": false
+          }
+        ],
+        "affected_zone_ids": [
+          "Z-nap"
+        ]
+      }
+    },
+    {
+      "event_id": "evt-site-huaiyinli-01-0021",
+      "event_type": "DESIGN_APPROVED",
+      "aggregate_type": "design_revision",
+      "aggregate_id": "site-huaiyinli-01",
+      "occurred_at": "2026-09-18T02:00:00.000Z",
+      "version": 12,
+      "summary": "设计通过：R2（不等同施工完成或允许收托）",
+      "payload": {
+        "conditions": [],
+        "revision_no": "R2",
+        "approved_by": "区住建委设计审查科"
+      }
+    },
+    {
+      "event_id": "evt-site-huaiyinli-01-0022",
+      "event_type": "CONSTRUCTION_COMPLETED",
+      "aggregate_type": "design_revision",
+      "aggregate_id": "site-huaiyinli-01",
+      "occurred_at": "2026-09-19T09:00:00.000Z",
+      "version": 13,
+      "summary": "施工完成：R2（不等同允许收托）",
+      "payload": {
+        "revision_no": "R2",
+        "completed_note": "午睡区按 R2 增设直通疏散门并完成隔墙改造"
+      }
+    },
+    {
+      "event_id": "evt-site-huaiyinli-01-0023",
+      "event_type": "MATERIAL_TEST_RECORDED",
+      "aggregate_type": "design_revision",
+      "aggregate_id": "site-huaiyinli-01",
+      "occurred_at": "2026-09-20T02:00:00.000Z",
+      "version": 14,
+      "summary": "登记Z-nap防火门与新装 PVC 地胶检测 MT-R2-NAP-01：合格",
+      "payload": {
+        "revision_no": "R2",
+        "zone_id": "Z-nap",
+        "material": "防火门与新装 PVC 地胶",
+        "report_no": "MT-R2-NAP-01",
+        "result": "PASS"
+      }
+    },
+    {
+      "event_id": "evt-site-huaiyinli-01-0024",
+      "event_type": "FIRE_OPINION_RECORDED",
+      "aggregate_type": "design_revision",
+      "aggregate_id": "site-huaiyinli-01",
+      "occurred_at": "2026-09-22T02:00:00.000Z",
+      "version": 15,
+      "summary": "登记消防意见 XF-2026-018：合格",
+      "payload": {
+        "conditions": [],
+        "revision_no": "R2",
+        "opinion_no": "XF-2026-018",
+        "zone_ids": [
+          "Z-nap"
+        ],
+        "result": "合格",
+        "issued_on": "2026-09-21",
+        "valid_until": "2027-09-20"
+      }
+    },
+    {
+      "event_id": "evt-site-huaiyinli-01-0025",
+      "event_type": "HEALTH_OPINION_RECORDED",
+      "aggregate_type": "design_revision",
+      "aggregate_id": "site-huaiyinli-01",
+      "occurred_at": "2026-09-22T02:00:00.000Z",
+      "version": 16,
+      "summary": "登记卫生评价意见 WS-2026-022：合格",
+      "payload": {
+        "conditions": [],
+        "revision_no": "R2",
+        "opinion_no": "WS-2026-022",
+        "zone_ids": [
+          "Z-nap"
+        ],
+        "result": "合格",
+        "issued_on": "2026-09-21",
+        "valid_until": "2027-09-20"
+      }
+    },
+    {
+      "event_id": "evt-site-huaiyinli-01-0026",
+      "event_type": "INSPECTION_RECORDED",
+      "aggregate_type": "inspection_finding",
+      "aggregate_id": "site-huaiyinli-01",
+      "occurred_at": "2026-09-25T03:00:00.000Z",
+      "version": 6,
+      "summary": "记录检查缺陷 FD-NAP-02（Z-nap/major）",
+      "payload": {
+        "finding_id": "FD-NAP-02",
+        "revision_no": "R2",
+        "zone_id": "Z-nap",
+        "category": "消防",
+        "severity": "major",
+        "description": "新增直通疏散门后，门两侧隔墙耐火极限现场存疑，需提供隐蔽工程影像并复测",
+        "evidence": [
+          {
+            "kind": "现场照片",
+            "ref": "EV-NAP-02-A",
+            "captured_at": "2026-09-25T03:00:00.000Z"
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "evt-site-huaiyinli-01-0027",
+      "event_type": "DEFECT_ASSIGNED",
+      "aggregate_type": "inspection_finding",
+      "aggregate_id": "site-huaiyinli-01",
+      "occurred_at": "2026-09-28T06:30:00.000Z",
+      "version": 7,
+      "summary": "缺陷 FD-NAP-02 派单给施工方项目经理 周工，限期 2026-10-20",
+      "payload": {
+        "finding_id": "FD-NAP-02",
+        "assignee": "施工方项目经理 周工",
+        "due_date": "2026-10-20"
+      }
+    }
+  ]
 }
