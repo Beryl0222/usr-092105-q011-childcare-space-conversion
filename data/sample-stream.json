@@ -1,0 +1,758 @@
+[
+  {
+    "event_id": "evt-hxl-0001",
+    "event_type": "TERM_REGISTERED",
+    "aggregate_type": "property_term",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2024-08-20T10:00:00+08:00",
+    "version": 1,
+    "summary": "登记场地使用权：区属公房出租作托育使用，首期五年",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "owner": "槐城区公房管理中心",
+      "original_use": "社区配套仓储用房",
+      "term_start": "2024-09-01",
+      "term_end": "2029-08-31"
+    }
+  },
+  {
+    "event_id": "evt-hxl-0002",
+    "event_type": "ORIGINAL_USE_RECORDED",
+    "aggregate_type": "property_term",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-03-05T14:00:00+08:00",
+    "version": 2,
+    "summary": "补登房屋原用途凭证（公房资产卡片）",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "original_use": "社区配套仓储用房",
+      "evidence_ref": "DOC-GY-2011-037"
+    }
+  },
+  {
+    "event_id": "evt-hxl-0003",
+    "event_type": "TERM_CHANGED",
+    "aggregate_type": "property_term",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-09-25T09:30:00+08:00",
+    "version": 3,
+    "summary": "产权单位函告：场地另有用途，使用权调整为两年后到期收回",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "term_end": "2028-10-31",
+      "reason": "公房管理中心 GC-2026-058 号函，期满收回用于社区综合服务"
+    }
+  },
+  {
+    "event_id": "evt-hxl-0004",
+    "event_type": "NEIGHBOR_AGREEMENT_RECORDED",
+    "aggregate_type": "property_term",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-09-26T16:00:00+08:00",
+    "version": 4,
+    "summary": "与居委会及相邻商户签订庭院分时段使用与噪声约定",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "agreement_ref": "NB-2026-09-01",
+      "parties": [
+        "槐树里社区居委会",
+        "相邻商户联建小组",
+        "槐香里托育点运营方"
+      ],
+      "agreed_from": "2026-10-01",
+      "agreed_until": "2027-09-30"
+    }
+  },
+  {
+    "event_id": "evt-hxl-0005",
+    "event_type": "SHARING_SCHEDULE_RECORDED",
+    "aggregate_type": "property_term",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-09-26T16:10:00+08:00",
+    "version": 5,
+    "summary": "登记共享庭院时段：晨间托育户外活动，傍晚归还社区",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "space": "院内庭院",
+      "slots": [
+        {
+          "days": "工作日",
+          "hours": "08:00-09:00",
+          "user": "托育点户外活动"
+        },
+        {
+          "days": "工作日",
+          "hours": "17:00-19:00",
+          "user": "社区居民活动"
+        }
+      ]
+    }
+  },
+  {
+    "event_id": "evt-hxl-0006",
+    "event_type": "DESIGN_SUBMITTED",
+    "aggregate_type": "design_revision",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-03-10T11:00:00+08:00",
+    "version": 1,
+    "summary": "提交改造施工图 R1（仓储改托育）",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "revision_no": 1,
+      "submitted_at": "2026-03-10"
+    }
+  },
+  {
+    "event_id": "evt-hxl-0007",
+    "event_type": "DESIGN_APPROVED",
+    "aggregate_type": "design_revision",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-04-01T15:00:00+08:00",
+    "version": 2,
+    "summary": "R1 图纸经联合审查通过（首版）",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "revision_no": 1,
+      "approving_authority": "区托育服务联合审查组",
+      "approved_at": "2026-04-01",
+      "supersedes_revision_no": 0,
+      "affected_scopes": [
+        "layout",
+        "structure",
+        "mep",
+        "fire",
+        "material",
+        "egress"
+      ]
+    }
+  },
+  {
+    "event_id": "evt-hxl-0008",
+    "event_type": "FUNCTIONAL_ZONES_DEFINED",
+    "aggregate_type": "design_revision",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-04-01T15:10:00+08:00",
+    "version": 3,
+    "summary": "R1 划定三个功能分区（整栋 420㎡，托育备案面积仅计分区使用面积）",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "revision_no": 1,
+      "zones": [
+        {
+          "zone_id": "Z-NAP",
+          "name": "午睡区",
+          "purpose": "婴幼儿午睡",
+          "area_m2": 55
+        },
+        {
+          "zone_id": "Z-PLAY",
+          "name": "活动室",
+          "purpose": "游戏与日间活动",
+          "area_m2": 75
+        },
+        {
+          "zone_id": "Z-CARE",
+          "name": "保健观察与配餐区",
+          "purpose": "卫生保健、观察隔离与配餐",
+          "area_m2": 30,
+          "capacity_eligible": false
+        }
+      ]
+    }
+  },
+  {
+    "event_id": "evt-hxl-0009",
+    "event_type": "MATERIAL_TEST_SUBMITTED",
+    "aggregate_type": "design_revision",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-04-10T10:00:00+08:00",
+    "version": 4,
+    "summary": "R1 装修材料环保/阻燃检测合格，覆盖三区",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "revision_no": 1,
+      "report_ref": "MT-2026-0410",
+      "issued_at": "2026-04-10",
+      "discipline": "material",
+      "covered_zones": [
+        "Z-NAP",
+        "Z-PLAY",
+        "Z-CARE"
+      ],
+      "valid_until": "2027-04-09"
+    }
+  },
+  {
+    "event_id": "evt-hxl-0010",
+    "event_type": "DISCIPLINE_OPINION_ISSUED",
+    "aggregate_type": "design_revision",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-04-12T10:00:00+08:00",
+    "version": 5,
+    "summary": "R1 消防设计审查意见：合格",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "revision_no": 1,
+      "opinion_ref": "FI-2026-0412",
+      "discipline": "fire",
+      "issued_at": "2026-04-12",
+      "valid_until": "2027-04-11",
+      "verdict": "pass",
+      "covered_zones": [
+        "Z-NAP",
+        "Z-PLAY",
+        "Z-CARE"
+      ]
+    }
+  },
+  {
+    "event_id": "evt-hxl-0011",
+    "event_type": "DISCIPLINE_OPINION_ISSUED",
+    "aggregate_type": "design_revision",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-04-13T10:00:00+08:00",
+    "version": 6,
+    "summary": "R1 卫生评价意见：合格（通风与采光满足）",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "revision_no": 1,
+      "opinion_ref": "HE-2026-0413",
+      "discipline": "health",
+      "issued_at": "2026-04-13",
+      "valid_until": "2027-04-12",
+      "verdict": "pass",
+      "covered_zones": [
+        "Z-NAP",
+        "Z-PLAY",
+        "Z-CARE"
+      ]
+    }
+  },
+  {
+    "event_id": "evt-hxl-0012",
+    "event_type": "CONSTRUCTION_COMPLETED",
+    "aggregate_type": "design_revision",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-08-20T17:00:00+08:00",
+    "version": 7,
+    "summary": "施工方申报 R1 改造完工并自评（不等于检查通过、更不等于允许收托）",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "revision_no": 1,
+      "completed_at": "2026-08-20",
+      "built_zones": [
+        "Z-NAP",
+        "Z-PLAY",
+        "Z-CARE"
+      ]
+    }
+  },
+  {
+    "event_id": "evt-hxl-0013",
+    "event_type": "CAPACITY_FILED",
+    "aggregate_type": "opening_decision",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-08-22T10:00:00+08:00",
+    "version": 1,
+    "summary": "午睡区备案容量 18 人（55㎡ ÷ 3㎡/人）",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "revision_no": 1,
+      "zone_id": "Z-NAP",
+      "ratio_basis": "人均使用面积不低于 3㎡（托育机构设置标准）",
+      "area_m2": 55,
+      "per_child_m2": 3,
+      "filed_capacity": 18,
+      "filed_at": "2026-08-22"
+    }
+  },
+  {
+    "event_id": "evt-hxl-0014",
+    "event_type": "CAPACITY_FILED",
+    "aggregate_type": "opening_decision",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-08-22T10:10:00+08:00",
+    "version": 2,
+    "summary": "活动室备案容量 25 人（75㎡ ÷ 3㎡/人）；保健配餐区不折算托位",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "revision_no": 1,
+      "zone_id": "Z-PLAY",
+      "ratio_basis": "人均使用面积不低于 3㎡（托育机构设置标准）",
+      "area_m2": 75,
+      "per_child_m2": 3,
+      "filed_capacity": 25,
+      "filed_at": "2026-08-22"
+    }
+  },
+  {
+    "event_id": "evt-hxl-0015",
+    "event_type": "INSPECTION_RECORDED",
+    "aggregate_type": "inspection_finding",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-08-25T10:00:00+08:00",
+    "version": 1,
+    "summary": "消防检查：午睡区疏散指示与备用照明未接通（严重缺陷，阻断收托）",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "revision_no": 1,
+      "finding_id": "F-NAP-01",
+      "zone_id": "Z-NAP",
+      "discipline": "fire",
+      "finding": "午睡区通往室外的疏散走道指示灯与备用照明未接专用回路",
+      "severity": "major"
+    }
+  },
+  {
+    "event_id": "evt-hxl-0016",
+    "event_type": "DEFECT_ASSIGNED",
+    "aggregate_type": "inspection_finding",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-08-25T11:00:00+08:00",
+    "version": 2,
+    "summary": "F-NAP-01 责令施工单位限期整改",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "finding_id": "F-NAP-01",
+      "zone_id": "Z-NAP",
+      "responsible_party": "城南建筑修缮工程队",
+      "due_date": "2026-11-30"
+    }
+  },
+  {
+    "event_id": "evt-hxl-0017",
+    "event_type": "INSPECTION_RECORDED",
+    "aggregate_type": "inspection_finding",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-08-25T14:00:00+08:00",
+    "version": 3,
+    "summary": "材料复检：午睡区新置储物柜 TVOC 初检偏高（一般缺陷）",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "revision_no": 1,
+      "finding_id": "F-NAP-02",
+      "zone_id": "Z-NAP",
+      "discipline": "material",
+      "finding": "午睡区储物柜 TVOC 检测值接近限值，需更换板材并复试",
+      "severity": "minor"
+    }
+  },
+  {
+    "event_id": "evt-hxl-0018",
+    "event_type": "DEFECT_ASSIGNED",
+    "aggregate_type": "inspection_finding",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-08-26T09:00:00+08:00",
+    "version": 4,
+    "summary": "F-NAP-02 责令供货方更换并送检",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "finding_id": "F-NAP-02",
+      "zone_id": "Z-NAP",
+      "responsible_party": "安童家具供货方",
+      "due_date": "2026-10-12"
+    }
+  },
+  {
+    "event_id": "evt-hxl-0019",
+    "event_type": "INSPECTION_RECORDED",
+    "aggregate_type": "inspection_finding",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-08-25T15:00:00+08:00",
+    "version": 5,
+    "summary": "卫生检查：活动室洗手池角阀渗水（一般缺陷）",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "revision_no": 1,
+      "finding_id": "F-PLAY-01",
+      "zone_id": "Z-PLAY",
+      "discipline": "health",
+      "finding": "活动室洗手池角阀渗水，地面积水有滑倒隐患",
+      "severity": "minor"
+    }
+  },
+  {
+    "event_id": "evt-hxl-0020",
+    "event_type": "DEFECT_ASSIGNED",
+    "aggregate_type": "inspection_finding",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-08-26T09:20:00+08:00",
+    "version": 6,
+    "summary": "F-PLAY-01 限期修复",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "finding_id": "F-PLAY-01",
+      "zone_id": "Z-PLAY",
+      "responsible_party": "城南建筑修缮工程队",
+      "due_date": "2026-09-15"
+    }
+  },
+  {
+    "event_id": "evt-hxl-0021",
+    "event_type": "DEFECT_RECTIFIED",
+    "aggregate_type": "inspection_finding",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-09-10T11:00:00+08:00",
+    "version": 7,
+    "summary": "F-PLAY-01 已更换角阀并做止水试验",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "finding_id": "F-PLAY-01",
+      "rectified_at": "2026-09-10",
+      "evidence_refs": [
+        "EV-2026-0910-PLAY-01.jpg",
+        "EV-2026-0910-PLAY-02.jpg"
+      ]
+    }
+  },
+  {
+    "event_id": "evt-hxl-0022",
+    "event_type": "FINDING_VERIFIED",
+    "aggregate_type": "inspection_finding",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-09-12T10:00:00+08:00",
+    "version": 8,
+    "summary": "F-PLAY-01 复验通过",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "finding_id": "F-PLAY-01",
+      "verified_at": "2026-09-12",
+      "verifier": "区卫生健康中心 钱检查员",
+      "verdict": "pass"
+    }
+  },
+  {
+    "event_id": "evt-hxl-0023",
+    "event_type": "ZONE_ACCEPTED",
+    "aggregate_type": "inspection_finding",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-09-18T15:00:00+08:00",
+    "version": 9,
+    "summary": "活动室分区验收通过（消防、卫生联合签署）",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "zone_id": "Z-PLAY",
+      "revision_no": 1,
+      "accepted_at": "2026-09-18",
+      "acceptance_ref": "ACC-2026-PLAY-R1",
+      "inspectors": [
+        "区消防救援大队 孙检查员",
+        "区卫生健康中心 钱检查员"
+      ]
+    }
+  },
+  {
+    "event_id": "evt-hxl-0024",
+    "event_type": "ZONE_ACCEPTED",
+    "aggregate_type": "inspection_finding",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-09-18T15:20:00+08:00",
+    "version": 10,
+    "summary": "保健观察与配餐区分区验收通过",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "zone_id": "Z-CARE",
+      "revision_no": 1,
+      "accepted_at": "2026-09-18",
+      "acceptance_ref": "ACC-2026-CARE-R1",
+      "inspectors": [
+        "区消防救援大队 孙检查员",
+        "区卫生健康中心 钱检查员"
+      ]
+    }
+  },
+  {
+    "event_id": "evt-hxl-0025",
+    "event_type": "OPENING_DECIDED",
+    "aggregate_type": "opening_decision",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-09-28T09:00:00+08:00",
+    "version": 3,
+    "summary": "局部开放决定：仅活动室允许收托半日班；午睡区未验收、严重缺陷未消除，封闭禁用",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "kind": "partial",
+      "decided_at": "2026-09-28",
+      "decision_ref": "OD-2026-09-01",
+      "signed_by": {
+        "name": "区托育服务专班 周负责人",
+        "title": "专班负责人"
+      },
+      "basis_revision_no": 1,
+      "zones_requested": [
+        "Z-PLAY"
+      ],
+      "basis_refs": [
+        "FI-2026-0412",
+        "HE-2026-0413",
+        "MT-2026-0410",
+        "ACC-2026-PLAY-R1"
+      ],
+      "evidence_refs": [
+        "EV-2026-0928-SITE-01.jpg",
+        "EV-2026-0928-SITE-02.mp4",
+        "CHK-2026-0928-LIST.pdf"
+      ],
+      "conditions": [
+        "仅招收半日班儿童，在托人数不超过备案容量 25 人，不设午睡",
+        "午睡区（Z-NAP）以硬隔离封闭并张贴禁用标识，开放日起每日开园前拍照留痕",
+        "F-NAP-01、F-NAP-02 整改复验并完成 R2 图纸审查前，午睡区不得启用",
+        "共享庭院使用遵守 NB-2026-09-01 时段约定"
+      ]
+    }
+  },
+  {
+    "event_id": "evt-hxl-0026",
+    "event_type": "CAPACITY_PUBLISHED",
+    "aggregate_type": "opening_decision",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-09-29T10:00:00+08:00",
+    "version": 4,
+    "summary": "招生页面更正发布：当前仅活动室获准，公布备案容量 25 人",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "published_at": "2026-09-29",
+      "page_ref": "https://example.org/admission/huaixiangli",
+      "zones_included": [
+        "Z-PLAY"
+      ],
+      "published_capacity": 25
+    }
+  },
+  {
+    "event_id": "evt-hxl-0027",
+    "event_type": "DESIGN_SUBMITTED",
+    "aggregate_type": "design_revision",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-09-30T10:00:00+08:00",
+    "version": 8,
+    "summary": "提交 R2：午睡区增设独立疏散指示灯回路、更换储物柜板材",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "revision_no": 2,
+      "submitted_at": "2026-09-30"
+    }
+  },
+  {
+    "event_id": "evt-hxl-0028",
+    "event_type": "DESIGN_APPROVED",
+    "aggregate_type": "design_revision",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-10-02T11:00:00+08:00",
+    "version": 9,
+    "summary": "R2 图纸通过，仅涉及午睡区疏散与材料；活动室、保健区不在影响范围",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "revision_no": 2,
+      "approving_authority": "区托育服务联合审查组",
+      "approved_at": "2026-10-02",
+      "supersedes_revision_no": 1,
+      "affected_scopes": [
+        "egress",
+        "material"
+      ],
+      "affected_zones": [
+        "Z-NAP"
+      ]
+    }
+  },
+  {
+    "event_id": "evt-hxl-0029",
+    "event_type": "FUNCTIONAL_ZONES_DEFINED",
+    "aggregate_type": "design_revision",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-10-02T11:10:00+08:00",
+    "version": 10,
+    "summary": "R2 分区清单：午睡区维持 55㎡，其余分区不变",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "revision_no": 2,
+      "zones": [
+        {
+          "zone_id": "Z-NAP",
+          "name": "午睡区",
+          "purpose": "婴幼儿午睡",
+          "area_m2": 55
+        },
+        {
+          "zone_id": "Z-PLAY",
+          "name": "活动室",
+          "purpose": "游戏与日间活动",
+          "area_m2": 75
+        },
+        {
+          "zone_id": "Z-CARE",
+          "name": "保健观察与配餐区",
+          "purpose": "卫生保健、观察隔离与配餐",
+          "area_m2": 30,
+          "capacity_eligible": false
+        }
+      ]
+    }
+  },
+  {
+    "event_id": "evt-hxl-0030",
+    "event_type": "MATERIAL_TEST_SUBMITTED",
+    "aggregate_type": "design_revision",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-10-03T15:00:00+08:00",
+    "version": 11,
+    "summary": "R2 午睡区更换板材后 TVOC、阻燃复试合格（旧报告 MT-2026-0410 对午睡区失效）",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "revision_no": 2,
+      "report_ref": "MT-2026-1003",
+      "issued_at": "2026-10-03",
+      "discipline": "material",
+      "covered_zones": [
+        "Z-NAP"
+      ],
+      "valid_until": "2027-10-02"
+    }
+  },
+  {
+    "event_id": "evt-hxl-0031",
+    "event_type": "DISCIPLINE_OPINION_ISSUED",
+    "aggregate_type": "design_revision",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-10-04T09:30:00+08:00",
+    "version": 12,
+    "summary": "R2 消防意见：午睡区疏散改造合格（旧 FI-2026-0412 对午睡区失效，其余分区沿用）",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "revision_no": 2,
+      "opinion_ref": "FI-2026-1004",
+      "discipline": "fire",
+      "issued_at": "2026-10-04",
+      "valid_until": "2027-10-03",
+      "verdict": "pass",
+      "covered_zones": [
+        "Z-NAP"
+      ]
+    }
+  },
+  {
+    "event_id": "evt-hxl-0032",
+    "event_type": "DISCIPLINE_OPINION_ISSUED",
+    "aggregate_type": "design_revision",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-10-04T10:30:00+08:00",
+    "version": 13,
+    "summary": "R2 卫生意见：午睡区更换家具后室内空气合格（旧 HE-2026-0413 对午睡区失效）",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "revision_no": 2,
+      "opinion_ref": "HE-2026-1004",
+      "discipline": "health",
+      "issued_at": "2026-10-04",
+      "valid_until": "2027-10-03",
+      "verdict": "pass",
+      "covered_zones": [
+        "Z-NAP"
+      ]
+    }
+  },
+  {
+    "event_id": "evt-hxl-0033",
+    "event_type": "DEFECT_RECTIFIED",
+    "aggregate_type": "inspection_finding",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-10-04T16:00:00+08:00",
+    "version": 11,
+    "summary": "F-NAP-02 储物柜更换完成并附进场检测",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "finding_id": "F-NAP-02",
+      "rectified_at": "2026-10-04",
+      "evidence_refs": [
+        "EV-2026-1004-NAP-CAB-01.jpg",
+        "MT-2026-1003"
+      ]
+    }
+  },
+  {
+    "event_id": "evt-hxl-0034",
+    "event_type": "FINDING_VERIFIED",
+    "aggregate_type": "inspection_finding",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-10-05T09:00:00+08:00",
+    "version": 12,
+    "summary": "F-NAP-02 复验通过",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "finding_id": "F-NAP-02",
+      "verified_at": "2026-10-05",
+      "verifier": "区卫生健康中心 钱检查员",
+      "verdict": "pass"
+    }
+  },
+  {
+    "event_id": "evt-hxl-0035",
+    "event_type": "DEFECT_RECTIFIED",
+    "aggregate_type": "inspection_finding",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-10-05T11:00:00+08:00",
+    "version": 13,
+    "summary": "F-NAP-01 疏散指示与备用照明专用回路施工完成，申请复验",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "finding_id": "F-NAP-01",
+      "rectified_at": "2026-10-05",
+      "evidence_refs": [
+        "EV-2026-1005-NAP-EXIT-01.jpg",
+        "EV-2026-1005-NAP-EXIT-02.jpg"
+      ]
+    }
+  },
+  {
+    "event_id": "evt-hxl-0036",
+    "event_type": "CONSTRUCTION_COMPLETED",
+    "aggregate_type": "design_revision",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-10-05T11:30:00+08:00",
+    "version": 14,
+    "summary": "R2 午睡区整改施工完成并自评（独立于设计通过，仍须复验与验收）",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "revision_no": 2,
+      "completed_at": "2026-10-05",
+      "built_zones": [
+        "Z-NAP"
+      ]
+    }
+  },
+  {
+    "event_id": "evt-hxl-0037",
+    "event_type": "EXIT_PLAN_FORMED",
+    "aggregate_type": "opening_decision",
+    "aggregate_id": "site-huaixiangli",
+    "occurred_at": "2026-10-05T15:00:00+08:00",
+    "version": 5,
+    "summary": "距到期两年，提前形成退出方案，覆盖设施、押金、长期班儿童安置与恢复责任",
+    "payload": {
+      "site_id": "site-huaixiangli",
+      "plan_ref": "EX-2026-10-01",
+      "formed_at": "2026-10-05",
+      "target_exit_date": "2028-09-30",
+      "facilities": {
+        "responsible_party": "槐香里托育点运营方",
+        "arrangement": "可拆卸教玩具 2028 年 6 月前迁运至备选场地；固定装修按恢复责任处理"
+      },
+      "deposit": {
+        "responsible_party": "槐城区公房管理中心",
+        "arrangement": "押金 8 万元在交还验收确认后 30 日内无息退还；欠费自押金抵扣并公示"
+      },
+      "child_placement": {
+        "responsible_party": "区托育服务专班（牵头）会同运营方",
+        "long_term_classes": 2,
+        "children": 12,
+        "arrangement": "2028 年秋季开学前，按家长意愿优先转入就近公立托育点或对口幼儿园托班，一人一档跟踪到安置确认"
+      },
+      "restoration": {
+        "responsible_party": "槐香里托育点运营方（施工保证金担保）",
+        "restore_to_use": "社区配套仓储用房",
+        "arrangement": "拆除隔断与坡道、封堵新增门洞、复原地面与墙面，经公房管理中心现场确认后签署交还单"
+      }
+    }
+  }
+]

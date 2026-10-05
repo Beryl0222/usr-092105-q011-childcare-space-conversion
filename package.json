@@ -5,6 +5,8 @@
   "type": "module",
   "description": "领域事件基础校验",
   "scripts": {
-    "test": "node --test"
+    "test": "node --test",
+    "report": "node src/report.js",
+    "build:sample": "node scripts/build-sample.mjs"
   }
 }

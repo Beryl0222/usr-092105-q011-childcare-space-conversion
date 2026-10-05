@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "托育空间改造验收领域事件",
-  "description": "用于跨模块交换事实记录的公共信封。",
+  "description": "用于跨模块交换事实记录的公共信封。多部门补件统一落在四个聚合：property_term（场地期限与使用约定）、design_revision（设计版次与专业意见）、inspection_finding（检查缺陷与分区验收）、opening_decision（开园、容量发布与退出）。",
   "type": "object",
   "required": [
     "event_id",
@@ -10,24 +10,42 @@
     "aggregate_id",
     "occurred_at",
     "version",
-    "summary"
+    "summary",
+    "payload"
   ],
   "properties": {
     "event_id": {
       "type": "string",
       "minLength": 8,
-      "description": "事件唯一标识"
+      "description": "事件唯一标识；来源系统重试时沿用原标识"
     },
     "event_type": {
       "type": "string",
       "enum": [
+        "TERM_REGISTERED",
+        "TERM_CHANGED",
+        "ORIGINAL_USE_RECORDED",
+        "NEIGHBOR_AGREEMENT_RECORDED",
+        "SHARING_SCHEDULE_RECORDED",
         "DESIGN_SUBMITTED",
+        "DESIGN_APPROVED",
+        "FUNCTIONAL_ZONES_DEFINED",
+        "MATERIAL_TEST_SUBMITTED",
+        "DISCIPLINE_OPINION_ISSUED",
+        "CONSTRUCTION_COMPLETED",
         "INSPECTION_RECORDED",
         "DEFECT_ASSIGNED",
+        "DEFECT_RECTIFIED",
+        "FINDING_VERIFIED",
+        "FINDING_WAIVED",
         "ZONE_ACCEPTED",
+        "CAPACITY_FILED",
+        "OPENING_DECIDED",
+        "CAPACITY_PUBLISHED",
+        "EXIT_PLAN_FORMED",
         "SITE_HANDED_BACK"
       ],
-      "description": "本领域事件类型"
+      "description": "本领域事件类型。DESIGN_APPROVED（设计通过）、CONSTRUCTION_COMPLETED（施工完成）、OPENING_DECIDED（允许收托）是三道独立闸门，禁止合并。"
     },
     "aggregate_type": {
       "type": "string",
@@ -37,7 +55,7 @@
         "inspection_finding",
         "opening_decision"
       ],
-      "description": "业务对象类型"
+      "description": "业务对象类型，沿用底座四聚合"
     },
     "aggregate_id": {
       "type": "string",
@@ -52,13 +70,41 @@
     "version": {
       "type": "integer",
       "minimum": 1,
-      "description": "对象版本"
+      "description": "对象版本，按聚合内顺序从 1 连续递增"
     },
     "summary": {
       "type": "string",
       "minLength": 2,
       "description": "中文事实摘要"
+    },
+    "payload": {
+      "type": "object",
+      "description": "事件负载，必填字段按事件类型见 src/events.js 事件目录",
+      "properties": {
+        "site_id": { "type": "string", "minLength": 1 },
+        "revision_no": { "type": "integer", "minimum": 1 },
+        "supersedes_revision_no": { "type": "integer", "minimum": 0 },
+        "affected_scopes": {
+          "type": "array",
+          "items": {
+            "enum": ["layout", "structure", "mep", "fire", "material", "egress", "facade"]
+          },
+          "minItems": 1
+        },
+        "discipline": {
+          "enum": ["fire", "health", "material", "structure", "mep"]
+        },
+        "verdict": { "enum": ["pass", "conditional_pass", "fail"] },
+        "severity": { "enum": ["major", "minor"] },
+        "kind": { "enum": ["full", "partial", "suspend", "rescind"] },
+        "zones_requested": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "zones_included": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "covered_zones": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "evidence_refs": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "conditions": { "type": "array", "items": { "type": "string" }, "minItems": 1 }
+      },
+      "additionalProperties": true
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }
